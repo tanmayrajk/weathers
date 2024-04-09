@@ -97,7 +97,7 @@ export default function WeatherToday({ data }: { data: ViewData }) {
                     color: graphBgColor,
                     font: {
                         family: "JetBrains Mono",
-                        weight: "bold",
+                        // weight: "bold",
                     },
                 },
             },

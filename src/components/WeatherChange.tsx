@@ -17,7 +17,7 @@ function WeatherChangeButton({
     const isDarkTheme = useThemeDetector();
     return (
         <div
-            className={`group p-3 border-2 flex flex-col items-center font-mono mr-3 cursor-pointer border-dashed rounded-md transition-all hover:bg-green hover:border-beige dark:hover:bg-lightorange dark:hover:border-darkgreen ${data.date === date && isDarkTheme ? "bg-lightorange border-darkgreen" : data.date === date && !isDarkTheme ? "bg-green border-beige" : isDarkTheme ? "bg-darkgreen border-lightorange" : "border-green bg-beige"}`}
+            className={`group p-3 border-2 flex flex-col items-center font-mono mr-3 last:mr-0 cursor-pointer border-dashed rounded-md transition-all hover:bg-green hover:border-beige dark:hover:bg-lightorange dark:hover:border-darkgreen ${data.date === date && isDarkTheme ? "bg-lightorange border-darkgreen" : data.date === date && !isDarkTheme ? "bg-green border-beige" : isDarkTheme ? "bg-darkgreen border-lightorange" : "border-green bg-beige"}`}
             onClick={() => {
                 setDate(data.date);
             }}

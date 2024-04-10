@@ -16,8 +16,6 @@ import ChartDataLabels from "chartjs-plugin-datalabels";
 import { DateTime } from "luxon";
 import legendToggle from "../utils/legendToggle";
 import useThemeDetector from "../hooks/useThemeDetector";
-// import useScreenSizeChange from "../hooks/useScreenSizeChange";
-import { useEffect, useRef } from "react";
 
 ChartJS.register(
     ChartDataLabels,
@@ -32,25 +30,8 @@ ChartJS.register(
 
 export default function WeatherToday({ data }: { data: ViewData }) {
     const isDarkTheme = useThemeDetector();
-    // const isScreenSmall = useScreenSizeChange();
     const graphBorderColor = isDarkTheme ? "#BC6C25" : "#283618";
     const graphBgColor = isDarkTheme ? "#F3C28D" : "#606C38";
-    const chartContainerRef = useRef<HTMLDivElement>(null);
-
-    useEffect(() => {
-        // console.log(isScreenSmall);
-        // const mql = window.onresize;
-        const chartContainer = chartContainerRef.current;
-        // if (chartContainer) {
-        //     chartContainer.style.width = "100%";
-        // }
-        window.onresize = () => {
-            console.log(window.innerWidth);
-            if (chartContainer) {
-                chartContainer.style.width = "100%";
-            }
-        };
-    }, []);
 
     const time_data = {
         labels: data.graph_data.time.map((time) =>
@@ -124,7 +105,7 @@ export default function WeatherToday({ data }: { data: ViewData }) {
         >
             <div className="inline-block p-5 pl-0 text-left max-md:text-center font-mono h-48 text-green dark:text-lightorange">
                 <div className="flex items-center justify-center">
-                    <div className="mb-3 ml-2">
+                    <div className="mb-3">
                         <IconContext.Provider value={{ size: "4em" }}>
                             {getWeatherIcon(
                                 data.view_data.weather_code,
@@ -136,7 +117,7 @@ export default function WeatherToday({ data }: { data: ViewData }) {
                         {Math.round(data.view_data.temperature)}°C
                     </div>
                 </div>
-                <div className="flex flex-col pl-3 font-semibold">
+                <div className="flex flex-col font-semibold">
                     <div>Humidity: {Math.round(data.view_data.humidity)}%</div>
                     <div>
                         Precipitation:{" "}
@@ -145,10 +126,7 @@ export default function WeatherToday({ data }: { data: ViewData }) {
                     <div>Wind: {Math.round(data.view_data.wind)}km/h</div>
                 </div>
             </div>
-            <div
-                ref={chartContainerRef}
-                className="h-48 p-5 w-full max-md:w-full"
-            >
+            <div className="h-48 p-5 pr-0 w-full max-md:w-full">
                 <Line options={options} data={time_data} />
             </div>
         </div>

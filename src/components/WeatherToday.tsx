@@ -126,7 +126,7 @@ export default function WeatherToday({ data }: { data: ViewData }) {
                     <div>Wind: {Math.round(data.view_data.wind)}km/h</div>
                 </div>
             </div>
-            <div className="h-48 p-5 pr-0 w-full max-md:w-full">
+            <div className="h-48 p-5 w-full max-md:w-full">
                 <Line options={options} data={time_data} />
             </div>
         </div>

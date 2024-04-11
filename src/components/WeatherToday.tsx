@@ -105,7 +105,7 @@ export default function WeatherToday({ data }: { data: ViewData }) {
         >
             <div className="inline-block p-5 pl-0 text-left max-md:text-center font-mono h-48 text-green dark:text-lightorange">
                 <div className="flex items-center justify-center">
-                    <div className="mb-3">
+                    <div className="mb-3 ml-2">
                         <IconContext.Provider value={{ size: "4em" }}>
                             {getWeatherIcon(
                                 data.view_data.weather_code,
@@ -117,7 +117,7 @@ export default function WeatherToday({ data }: { data: ViewData }) {
                         {Math.round(data.view_data.temperature)}°C
                     </div>
                 </div>
-                <div className="flex flex-col font-semibold">
+                <div className="flex flex-col pl-3 font-semibold">
                     <div>Humidity: {Math.round(data.view_data.humidity)}%</div>
                     <div>
                         Precipitation:{" "}
